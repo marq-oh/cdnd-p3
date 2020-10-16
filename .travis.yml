@@ -16,7 +16,7 @@ install:
   
   after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push marco5/udagram-api_users
   - docker push marco5/udagram-api_feed
+  - docker push marco5/udagram-api_users
   - docker push marco5/reverse-proxy
   - docker push marco5/udagram-frontend
