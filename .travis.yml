@@ -13,3 +13,10 @@ before_install:
 install:
   - docker-compose -f docker-compose-file/docker-compose-build.yaml build --parallel 
   - docker-compose -f docker-compose-file/docker-compose-build.yaml push
+  
+  after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push marco5/udagram-api_users
+  - docker push marco5/udagram-api_feed
+  - docker push marco5/reverse-proxy
+  - docker push marco5/udagram-frontend
