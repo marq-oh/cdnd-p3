@@ -13,6 +13,7 @@ before_install:
 
 install: 
     - docker-compose -f docker-compose-file/docker-compose-build.yml build --parallel 
+    - docker-compose -f docker-compose-file/docker-compose-build.yaml push
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
